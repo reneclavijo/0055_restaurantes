@@ -24,6 +24,9 @@ class TiposComidasController < ApplicationController
     def eliminar
         # pasos para eliminar un registro
         # 1. buscar el registro por ID
+        tipo = TipoComida.find(params[:id])
         # 2. Intentar eliminar el registro
+        tipo.destroy
+        redirect_to listar_tipos_comida_path
     end
 end

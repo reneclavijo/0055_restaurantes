@@ -14,7 +14,9 @@
             <td> <%= tipo_comida.id %> </td>
             <td> <%= tipo_comida.tipo %> </td>
             <td>
-                <%= link_to 'Borrar', eliminar_tipo_comida_path(tipo_comida), method: :delete %>
+                <%= link_to eliminar_tipo_comida_path(tipo_comida), method: :delete do %>
+                    Borrar
+                <% end %>
             </td>
         </tr>
     <% end %>

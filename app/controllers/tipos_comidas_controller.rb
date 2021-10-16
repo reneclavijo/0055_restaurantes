@@ -19,4 +19,11 @@ class TiposComidasController < ApplicationController
         nuevo_tipo.save
         redirect_to listar_tipos_comida_path
     end
+
+    # DELETE tipos_comidas/:id
+    def eliminar
+        # pasos para eliminar un registro
+        # 1. buscar el registro por ID
+        # 2. Intentar eliminar el registro
+    end
 end

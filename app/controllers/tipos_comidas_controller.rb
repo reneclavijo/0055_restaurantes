@@ -3,6 +3,7 @@ class TiposComidasController < ApplicationController
     # GET /tipos_comidas
     def listar
         @todos_los_tipos = TipoComida.all
+        @titulo_link = "Mensaje desde el contralor"
     end
 
     # GET /nuevo_tipo_comida

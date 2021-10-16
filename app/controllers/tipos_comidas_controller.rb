@@ -17,7 +17,7 @@ class TiposComidasController < ApplicationController
         datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
         nuevo_tipo = TipoComida.new(datos_tipo_comida)
         nuevo_tipo.save
-        redirect_to listar_tipos_comida_path
+        redirect_to listar_tipos_comidas_path
     end
 
     # DELETE tipos_comidas/:id
@@ -27,6 +27,6 @@ class TiposComidasController < ApplicationController
         tipo = TipoComida.find(params[:id])
         # 2. Intentar eliminar el registro
         tipo.destroy
-        redirect_to listar_tipos_comida_path
+        redirect_to listar_tipos_comidas_path
     end
 end

@@ -9,4 +9,9 @@ class TiposComidasController < ApplicationController
     def nuevo
 
     end
+
+    # POST /nuevo_tipo_comida
+    def crear
+        # guardar lo que llegue del formulario en la base de datos
+    end
 end

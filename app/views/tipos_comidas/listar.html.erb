@@ -6,12 +6,16 @@
     <tr>
         <th>id</th>
         <th>tipo</th>
+        <th>acciones</th>
     </tr>
 
     <% @todos_los_tipos.each do |tipo_comida| %>
         <tr>
             <td> <%= tipo_comida.id %> </td>
             <td> <%= tipo_comida.tipo %> </td>
+            <td>
+                Borrar <%= tipo_comida.id %>
+            </td>
         </tr>
     <% end %>
 </table>

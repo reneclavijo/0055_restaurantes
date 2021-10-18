@@ -23,7 +23,7 @@ class TiposComidasController < ApplicationController
     end
 
     # POST /tipos_comidas
-    def crear
+    def guardar
         # guardar lo que llegue del formulario en la base de datos
         datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
         nuevo_tipo = TipoComida.new(datos_tipo_comida)

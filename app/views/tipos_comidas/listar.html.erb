@@ -12,7 +12,11 @@
     <% @todos_los_tipos.each do |tipo_comida| %>
         <tr>
             <td> <%= tipo_comida.id %> </td>
-            <td> <%= tipo_comida.tipo %> </td>
+            <td> 
+                <%= link_to tipo_comida_path(tipo_comida) do %>
+                    <%= tipo_comida.tipo %>
+                <% end %>
+            </td>
             <td>
                 <%= link_to tipo_comida_path(tipo_comida), method: :delete, data: { confirm: '¿Está seguro que quiere eliminar el registro?' } do %>
                     Borrar

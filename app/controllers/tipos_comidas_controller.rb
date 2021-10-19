@@ -2,7 +2,7 @@ class TiposComidasController < ApplicationController
 
     # GET /tipos_comidas
     def listar
-        @todos_los_tipos = TipoComida.all
+        @todos_los_tipos = TipoComida.all.order(id: :asc)
         @titulo_link = "Registrar nuevo tipo de comida"
     end
 

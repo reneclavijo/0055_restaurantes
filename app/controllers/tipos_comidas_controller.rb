@@ -21,6 +21,7 @@ class TiposComidasController < ApplicationController
     # GET /tipos_comidas/:id/editar
     def editar
         # mostrar el formulario con los datos de un registro para cambiarlos
+        @tipo_comida = TipoComida.find(params[:id])
     end
 
     # POST /tipos_comidas

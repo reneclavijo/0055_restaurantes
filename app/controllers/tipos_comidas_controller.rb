@@ -15,6 +15,7 @@ class TiposComidasController < ApplicationController
     def mostrar
         # vista para mostrar el detalle de un tipo de comida
         # por ejemplo, podríamos mostrar todos los restaruantes adjuntos
+        @tipo_comida = TipoComida.find(params[:id])
     end
 
     # GET /tipos_comidas/:id/editar

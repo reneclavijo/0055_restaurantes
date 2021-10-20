@@ -62,10 +62,13 @@ Los usuarios deberían poder buscar el restaurante, votar por alguno y registrar
 7. Agregar un controlador y una vista que permita ver los registros en la base de datos
 
     ```ruby
-     # GET /tipos_comidas
-    def listar
-        @todos_los_tipos = TipoComida.all.order(id: :asc)
-        @titulo_link = "Registrar nuevo tipo de comida"
+    # app/controllers/tipos_comidas_controller.rb
+    class TiposComidasController < ApplicationController
+        # GET /tipos_comidas
+        def listar
+            @todos_los_tipos = TipoComida.all.order(id: :asc)
+            @titulo_link = "Registrar nuevo tipo de comida"
+        end
     end
     ```
 

@@ -55,8 +55,8 @@ Los usuarios deberían poder buscar el restaurante, votar por alguno y registrar
 6. Crear un registro en la base de datos con TipoComida
 
     ```ruby
-    tipo_italiana = TipoComida.new(tipo: 'italiana')
-    tipo_italiana.save
+    tipo_italiana = TipoComida.new(tipo: 'italiana')    # creamos un objeto TipoComida
+    tipo_italiana.save                                      # guardamos en objeto en la BD
     ```
 
 7. Agregar un controlador y una vista que permita ver los registros en la base de datos
@@ -130,5 +130,24 @@ Los usuarios deberían poder buscar el restaurante, votar por alguno y registrar
         nuevo_tipo.save
 
         redirect_to tipos_comidas_path
+    end
+    ```
+
+11. Modificar el archivo de ruta con las convenciones
+
+    ```ruby
+    Rails.application.routes.draw do
+  
+    # Rutas Tipos Comidas
+    get      'tipos_comidas',             to: 'tipos_comidas#listar',     as: 'tipos_comidas'     # listar 
+    get      'tipos_comidas/nuevo',       to: 'tipos_comidas#crear',      as: 'nuevo_tipo_comida' # formulario de nuevo
+    get      'tipos_comidas/:id',         to: 'tipos_comidas#mostrar',    as: 'tipo_comida'       # vista del detalle de un tipo de comida
+    get      'tipos_comidas/:id/editar',  to: 'tipos_comidas#editar',     as: 'editar_tipo_comida'# formulario para editar el registro
+
+    post     'tipos_comidas',             to: 'tipos_comidas#guardar'
+    put      'tipos_comidas/:id',         to: 'tipos_comidas#actualizar'
+    patch    'tipos_comidas/:id',         to: 'tipos_comidas#actualizar'
+    delete   'tipos_comidas/:id',         to: 'tipos_comidas#eliminar'
+
     end
     ```

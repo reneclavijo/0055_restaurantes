@@ -1,3 +1,4 @@
+# Los controladores son en "plural" y hacen referencia al modelo 
 class TiposComidasController < ApplicationController
 
     # GET /tipos_comidas
@@ -29,10 +30,10 @@ class TiposComidasController < ApplicationController
         # guardar lo que llegue del formulario en la base de datos
         datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
         @tipo_comida = TipoComida.new(datos_tipo_comida)
-        if @tipo_comida.save
+        if @tipo_comida.save # pregunta por las valiciones, SI pasa todas, se guarda, SINO, agregar un hash de errores
             redirect_to tipos_comidas_path
         else
-            render :crear
+            render :crear # prestado una vista
         end        
     end
 

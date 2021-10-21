@@ -17,6 +17,7 @@ Los usuarios deberían poder buscar el restaurante, votar por alguno y registrar
     # rails new <nombre_aplicación> -> crea una aplicación en rails
     # -d postgresql -> configura el proyecto con la gema pg
     # -T -> crea un proyecto sin archivos de prueba de Minitest (vamos a utilizar Rspec)
+    sudo apt-get install libpq-dev # instalar bibliotecas necesarias para la gema de postgres
     rails new <nombre_aplicación> -d postgresql -T
     ```
 

@@ -49,3 +49,13 @@
         
     end
     ```
+
+7. Crear el archivo de controlador
+
+    ```ruby
+    # app/controllers/usuarios_controller.rb
+    # Los controladores son el plural
+    class UsuariosController < ApplicationController
+        
+    end
+    ```

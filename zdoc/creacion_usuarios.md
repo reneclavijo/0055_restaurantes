@@ -130,3 +130,19 @@
         end
     end
     ```
+
+14. Definir el método `guardar` para guardar los usuarios por formulario
+
+    ```ruby
+    # app/controllers/usuarios_controller.rb
+    # POST /usuarios
+    def guardar
+        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
+        @usuario = Usuario.new(datos_usuario)
+        if @usuario.save
+            # mostrar un mensaje o vista de confirmación
+        else
+            render :crear
+        end
+    end
+    ```

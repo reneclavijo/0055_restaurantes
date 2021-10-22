@@ -59,3 +59,26 @@
         
     end
     ```
+
+8. Crear el método y la vista para el método
+
+    ```ruby
+    # Los controladores son el plural
+    class UsuariosController < ApplicationController
+        
+        # GET /usuarios/nuevo
+        def crear
+        end
+    end
+    ```
+
+9. Crear el archivo `app/views/usuarios/crear.html.erb`
+
+10. Crear la ruta GET para la vista de crear un usuario
+
+    ```ruby
+    # config/routes.rb
+    # Usuarios
+
+    get       'usuarios/nuevo',           to: 'usuarios#crear',         as: 'nuevo_usuario'
+    ```

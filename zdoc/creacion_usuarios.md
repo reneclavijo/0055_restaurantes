@@ -82,3 +82,51 @@
 
     get       'usuarios/nuevo',           to: 'usuarios#crear',         as: 'nuevo_usuario'
     ```
+
+11. Crear el formulario en el archivo `app/views/usuarios/crear.html.erb`
+
+    ```html
+    <h1>Registro</h1>
+
+    <%= form_with(model: @usuario) do |formulario| %>
+        <div class="mb-3">
+            <%= formulario.label      :nombre_usuario, class: 'form-label'%>
+            <%= formulario.text_field :nombre_usuario, class: 'form-control' %>
+        </div>
+        
+        <div class="mb-3">
+            <%= formulario.label          :password, class: 'form-label' %>
+            <%= formulario.password_field :password, class: 'form-control' %>
+        </div>
+        
+        <div class="mb-3">
+            <%= formulario.label          :password_confirmation, class: 'form-label' %>
+            <%= formulario.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+
+
+        <%= formulario.submit %>
+    <% end %>
+    ```
+
+12. Agregar la ruta del post (momentánea)
+
+    ```ruby
+    # Usuarios
+
+    get       'usuarios/nuevo',           to: 'usuarios#crear',         as: 'nuevo_usuario'
+    post      'usuarios',                 to: 'usuarios#guardar',       as: 'usuarios'
+    ```
+
+13. Crear la variable `@usuario` en el controlador
+
+    ```ruby
+    # Los controladores son el plural
+    class UsuariosController < ApplicationController
+        
+        # GET /usuarios/nuevo
+        def crear
+            @usuario = Usuario.new
+        end
+    end
+    ```

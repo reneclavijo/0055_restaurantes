@@ -238,7 +238,7 @@
 
     ```ruby
     # app/controllers/usuarios_controller.rb
-    
+
     # GET /usuarios/:id/editar
     def editar
         @usuario = Usuario.find(params[:id])
@@ -254,4 +254,26 @@
     <%= @usuario.nombre_usuario %>
 
     <%= link_to "Editar", editar_usuario_path(@usuario), class: 'btn btn-warning' %>
+    ```
+
+22. Agregar la ruta *patch y put* para permitir la actualización de datos
+
+    ```ruby
+    #routes.rb
+    patch     'usuarios/:id',             to: 'usuarios#actualizar'
+    ```
+
+23. Agregar la lógica y de actualizar en un nuevo método en el controlador
+
+    ```ruby
+    # PATCH /usuarios/:id
+    def actualizar
+        @usuario = Usuario.find(params[:id])
+        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
+        if @usuario.update(datos_usuario)
+            redirect_to usuario_path(@usuario)
+        else
+            render :editar
+        end
+    end
     ```

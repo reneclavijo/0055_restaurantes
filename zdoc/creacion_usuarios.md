@@ -146,3 +146,44 @@
         end
     end
     ```
+
+15. Agregar los errores a la vista del formulario para crear un usuario
+
+    ```html
+    <h1>Registro</h1>
+
+    <%= form_with(model: @usuario) do |formulario| %>
+        <div class="mb-3">
+            <%= formulario.label      :nombre_usuario, class: 'form-label'%>
+            <%= formulario.text_field :nombre_usuario, class: 'form-control' %>
+            <% if @usuario.errors[:nombre_usuario].any? %>
+                <div class="alert alert-danger" role="alert">
+                    <%= @usuario.errors[:nombre_usuario].first %>
+                </div>
+            <% end %>
+        </div>
+        
+        <div class="mb-3">
+            <%= formulario.label          :password, class: 'form-label' %>
+            <%= formulario.password_field :password, class: 'form-control' %>
+            <% if @usuario.errors[:password].any? %>
+                <div class="alert alert-danger" role="alert">
+                    <%= @usuario.errors[:password].first %>
+                </div>
+            <% end %>
+        </div>
+        
+        <div class="mb-3">
+            <%= formulario.label          :password_confirmation, class: 'form-label' %>
+            <%= formulario.password_field :password_confirmation, class: 'form-control' %>
+            <% if @usuario.errors[:password_confirmation].any? %>
+                <div class="alert alert-danger" role="alert">
+                    <%= @usuario.errors[:password_confirmation].first %>
+                </div>
+            <% end %>
+        </div>
+
+
+        <%= formulario.submit %>
+    <% end %>
+    ```

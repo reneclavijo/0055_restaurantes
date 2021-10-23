@@ -6,13 +6,17 @@ class UsuariosController < ApplicationController
         @usuario = Usuario.new
     end
 
+    # GET /usuarios/:id
+    def mostrar
+        @usuario = Usuario.find(params[:id])
+    end
+
     # POST /usuarios
     def guardar
-        datos_usuario = params.require(:usuario)
-        .permit(:nombre_usuario, :password, :password_confirmation)
+        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
         @usuario = Usuario.new(datos_usuario)
         if @usuario.save
-            # mostrar un mensaje o vista de confirmación
+            redirect_to usuario_path(@usuario)
         else
             render :crear
         end

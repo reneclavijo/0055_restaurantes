@@ -277,3 +277,54 @@
         end
     end
     ```
+
+24. Agregar lógica para eliminar un usuario y enviar un mensaje de confirmación
+
+    ```ruby
+    # app/controllers/usuarios_controller.rb
+    # DELETE /usuarios/:id
+    def eliminar
+        @usuario = Usuario.find(params[:id])
+        if @usuario.destroy # intentar eliminar un registro
+            flash[:eliminar] = "Usuario #{@usuario.nombre_usuario} eliminado"
+        else
+            flash[:eliminar] = "NO se pudo eliminar"
+        end       
+        redirect_to nuevo_usuario_path
+    end
+    ```
+
+25. Agregar la ruta *delete*
+
+    ```ruby
+    delete    'usuarios/:id',             to: 'usuarios#eliminar'
+    ```
+
+26. Agregar el botón para eliminar una cuenta en la vista *app/views/usuarios/mostrar.html.erb*
+
+    ```html
+    <h1>Bienvenido</h1>
+
+    <%= @usuario.nombre_usuario %>
+
+    <%= link_to "Editar", editar_usuario_path(@usuario), class: 'btn btn-warning' %>
+
+    <%= link_to usuario_path(@usuario), method: :delete, class: 'btn btn-danger' do %>
+        <i class="fas fa-trash-alt"></i>
+        Eliminar cuenta
+    <% end %>
+    ```
+
+27. Mostrar el mensaje enviado desde eliminar hacia la vista de *crear.html.erb*
+
+    ```html
+    <h1>Registro</h1>
+
+    <% if flash[:eliminar] %>
+        <div class="alert alert-danger" role="alert">
+            <%= flash[:eliminar] %>
+        </div>
+    <% end %>
+
+    <%= render 'formulario', base_usuario: @usuario %>
+    ```

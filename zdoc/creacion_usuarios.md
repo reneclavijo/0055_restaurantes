@@ -187,3 +187,49 @@
         <%= formulario.submit %>
     <% end %>
     ```
+
+16. Definir un nuevo método *mostrar*
+
+    ```ruby
+    # GET /usuarios/:id
+    def mostrar
+        @usuario = Usuario.find(params[:id])
+    end
+    ```
+
+17. Crear la vista *app/views/usuarios/mostrar.html.erb*
+
+    ```html
+    <h1>Bienvenido</h1>
+
+    <%= @usuario.nombre_usuario %>
+    ```
+
+18. Dar lógica al método *mostrar* y redirigir después de guardar en la base de datos
+
+    ```ruby
+    # POST /usuarios
+    def guardar
+        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
+        @usuario = Usuario.new(datos_usuario)
+        if @usuario.save
+            redirect_to usuario_path(@usuario)
+        else
+            render :crear
+        end
+    end
+    ```
+
+19. Definir la ruta, vista y método para mostrar la vista de editar
+
+    ```ruby
+    # config/routes.rb
+    get       'usuarios/:id/editar',      to: 'usuarios#editar',        as: 'editar_usuario'
+    ```
+
+    ```ruby
+    # app/controllers/usuarios_controller.rb
+    def editar
+
+    end
+    ```

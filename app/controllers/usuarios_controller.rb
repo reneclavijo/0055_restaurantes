@@ -11,6 +11,11 @@ class UsuariosController < ApplicationController
         @usuario = Usuario.find(params[:id])
     end
 
+    # GET /usuarios/:id/editar
+    def editar
+        @usuario = Usuario.find(params[:id])
+    end
+
     # POST /usuarios
     def guardar
         datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)

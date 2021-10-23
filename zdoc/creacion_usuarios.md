@@ -233,3 +233,25 @@
 
     end
     ```
+
+20. Buscar el usuario en la base de datos
+
+    ```ruby
+    # app/controllers/usuarios_controller.rb
+    
+    # GET /usuarios/:id/editar
+    def editar
+        @usuario = Usuario.find(params[:id])
+    end
+    ```
+
+21. Agregar un botón de navegación para ver el formulario desde *mostrar.html.erb*
+
+    ```html
+    <!-- app/views/usuarios/mostrar.html.erb -->
+    <h1>Bienvenido</h1>
+
+    <%= @usuario.nombre_usuario %>
+
+    <%= link_to "Editar", editar_usuario_path(@usuario), class: 'btn btn-warning' %>
+    ```

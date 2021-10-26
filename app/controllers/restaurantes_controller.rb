@@ -5,4 +5,9 @@ class RestaurantesController < ApplicationController
     def crear
         @restaurante = Restaurante.new
     end
+
+    # POST /restaurantes
+    def guardar
+        
+    end
 end

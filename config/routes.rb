@@ -32,4 +32,7 @@ Rails.application.routes.draw do
   patch     'usuarios/:id',             to: 'usuarios#actualizar'
   put       'usuarios/:id',             to: 'usuarios#actualizar' # buena práctica colocar el PUT 
   delete    'usuarios/:id',             to: 'usuarios#eliminar'
+
+  # Restaurantes
+  get           'restaurantes/nuevo',         to: 'restaurantes#crear', as: 'nuevo_restaurante'
 end

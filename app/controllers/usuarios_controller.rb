@@ -19,8 +19,7 @@ class UsuariosController < ApplicationController
 
     # POST /usuarios
     def guardar
-        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
-        @usuario = Usuario.new(datos_usuario)
+        @usuario = Usuario.new(params_usuario)
         if @usuario.save
             redirect_to usuario_path(@usuario)
         else
@@ -30,9 +29,8 @@ class UsuariosController < ApplicationController
 
     # PATCH /usuarios/:id
     def actualizar
-        @usuario = Usuario.find(params[:id])
-        datos_usuario = params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
-        if @usuario.update(datos_usuario)
+        @usuario = Usuario.find(params[:id])        
+        if @usuario.update(params_usuario)
             redirect_to usuario_path(@usuario)
         else
             render :editar
@@ -49,5 +47,10 @@ class UsuariosController < ApplicationController
             flash[:eliminar] = "NO se pudo eliminar"
         end       
         redirect_to nuevo_usuario_path
+    end
+
+    private
+    def params_usuario # devuelve la lista de datos del formulario en HASH
+        return params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
     end
 end

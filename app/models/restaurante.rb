@@ -12,8 +12,6 @@ class Restaurante < ApplicationRecord
   has_many :puntajes, through: :puntajes_restaurantes
 
   
-  validates(:nombre, presence: true)
-  validates(:nombre, uniqueness: true)
-  
+  validates(:nombre, presence: true, uniqueness: true)  
   validates(:tipo_comida_id, presence: true)
 end

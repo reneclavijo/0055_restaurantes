@@ -14,7 +14,7 @@
     <div class="mb-3">
         <%= formulario.label :tipo_comida_id, class: 'form-label' %>
         <%= formulario.select :tipo_comida_id, 
-            options_from_collection_for_select(@tipos_comidas, :id, :tipo, nil),
+            options_from_collection_for_select(@tipos_comidas, :id, :tipo, @restaurante.tipo_comida_id),
             { include_blank: 'Elige un tipo de comida' },
             class: "form-select" %>
         <% if @restaurante.errors[:tipo_comida_id].any? %>

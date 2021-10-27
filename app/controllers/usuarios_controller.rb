@@ -1,5 +1,7 @@
 # Los controladores son el plural
 class UsuariosController < ApplicationController
+
+    before_action :buscar_usuario, only: [:mostrar, :editar, :actualizar, :eliminar]
     
     # GET /usuarios/nuevo
     def crear
@@ -8,13 +10,12 @@ class UsuariosController < ApplicationController
 
     # GET /usuarios/:id
     def mostrar
-        # recibe datos 
-        @usuario = Usuario.find(params[:id])
+
     end
 
     # GET /usuarios/:id/editar
     def editar
-        @usuario = Usuario.find(params[:id])
+        
     end
 
     # POST /usuarios
@@ -29,7 +30,6 @@ class UsuariosController < ApplicationController
 
     # PATCH /usuarios/:id
     def actualizar
-        @usuario = Usuario.find(params[:id])        
         if @usuario.update(params_usuario)
             redirect_to usuario_path(@usuario)
         else
@@ -39,7 +39,6 @@ class UsuariosController < ApplicationController
 
     # DELETE /usuarios/:id
     def eliminar
-        @usuario = Usuario.find(params[:id])
         if @usuario.destroy # intentar eliminar un registro
             flash[:eliminar] = 
             "Usuario #{@usuario.nombre_usuario} eliminado"
@@ -52,5 +51,9 @@ class UsuariosController < ApplicationController
     private
     def params_usuario # devuelve la lista de datos del formulario en HASH
         return params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
+    end
+
+    def buscar_usuario
+        @usuario = Usuario.find(params[:id])
     end
 end

@@ -1,5 +1,8 @@
 # Los modelos son en singular
 class Usuario < ApplicationRecord
+
+    before_validation :capitalizar
+
     has_secure_password
 
     has_many :invitaciones
@@ -15,4 +18,9 @@ class Usuario < ApplicationRecord
     validates(:nombre_usuario, presence: true)
     validates(:nombre_usuario, uniqueness: true)
     
+    private 
+
+    def capitalizar
+        self.nombre_usuario.capitalize!
+    end
 end

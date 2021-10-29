@@ -3,6 +3,11 @@ class TiposComidasController < ApplicationController
 
     before_action :asignar_tipo_comida, only: [:mostrar, :editar, :actualizar, :eliminar]
 
+    # before_action :mostrar_mensaje_antes, only: [:listar]
+    # after_action  :mostrar_mensaje_despues
+
+
+
     # GET /tipos_comidas
     def listar
         @todos_los_tipos = TipoComida.all.order(id: :asc)
@@ -28,7 +33,7 @@ class TiposComidasController < ApplicationController
     # POST /tipos_comidas
     def guardar
         # guardar lo que llegue del formulario en la base de datos
-        datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
+        datos_tipo_comida = params.require(:tipo_comida).permit(:tipo) # REPETIDO 💔
         @tipo_comida = TipoComida.new(datos_tipo_comida)
         if @tipo_comida.save # pregunta por las valiciones, SI pasa todas, se guarda, SINO, agregar un hash de errores
             redirect_to tipos_comidas_path
@@ -39,7 +44,7 @@ class TiposComidasController < ApplicationController
 
     def actualizar
         # encontrar el registro que quiero editar en la BD
-        datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
+        datos_tipo_comida = params.require(:tipo_comida).permit(:tipo) # REPETIDO 💔
         # actualizar los campos necesarios
         @tipo_comida.tipo = datos_tipo_comida[:tipo]
         # guardar los cambios en la base de datos
@@ -62,6 +67,17 @@ class TiposComidasController < ApplicationController
     def asignar_tipo_comida
         @tipo_comida = TipoComida.find(params[:id])
     end
+
+
+    
+    def mostrar_mensaje_antes
+        puts "HOLA ANTES DEL ACTION 🚚"
+    end
+
+    def mostrar_mensaje_despues
+        puts "HOLA DESPUÉS DEL ACTION 🖖"
+    end
+
 
 
 end

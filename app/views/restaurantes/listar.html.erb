@@ -1,0 +1,24 @@
+<h1>Lista de restaurantes</h1>
+
+<%= link_to "Nuevo restaurante", nuevo_restaurante_path %> 
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Tipo de comida</th>
+        <th>Acciones</th>
+    </tr>
+
+    <% @restaurantes.each do |restaurante| %>
+        <tr>
+            <td><%= restaurante.id %></td>
+            <td><%= link_to restaurante.nombre, restaurante_path(restaurante) %></td>
+            <td><%= restaurante.tipo_comida.tipo %></td>
+            <td>
+                <%= link_to "editar", editar_restaurante_path(restaurante) %>
+                <%= link_to "eliminar", restaurante_path(restaurante), method: :delete, data: { confirm: "¿seguro que quiere eliminar el restaurante?" } %>
+            </td>
+        </tr>
+    <% end %>
+</table>

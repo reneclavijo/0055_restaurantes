@@ -24,5 +24,6 @@ class TipoComida < ApplicationRecord
 
     def imprmir_el_eliminado
         puts "#{self.tipo} ELIMINADO".center(50, "🔴")
+        
     end
 end

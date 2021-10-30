@@ -23,10 +23,12 @@ class PuntajesController < ApplicationController
 
     # POST /puntajes
     def guardar
-        nuevo_puntaje = Puntaje.new(params_puntaje)
-        nuevo_puntaje.save
-        
-        redirect_to puntajes_path
+        @puntaje = Puntaje.new(params_puntaje)
+        if @puntaje.save        
+            redirect_to puntajes_path
+        else
+            render :crear
+        end
     end
 
     # PUT   /puntajes/:id
@@ -40,13 +42,13 @@ class PuntajesController < ApplicationController
 
     # DELETE /puntajes/:id    
     def eliminar
-        puntaje.destroy
+        @puntaje.destroy
         redirect_to puntajes_path
     end
 
     private
     def asignar_puntaje
-        puntaje = Puntaje.find(params[:id])
+        @puntaje = Puntaje.find(params[:id])
     end
 
     def params_puntaje

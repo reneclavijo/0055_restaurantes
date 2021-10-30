@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'platos/listar'
+  get 'platos/crear'
+  get 'platos/mostrar'
+  get 'platos/editar'
   # Rutas Tipos Comidas
   get      'tipos_comidas',             to: 'tipos_comidas#listar',     as: 'tipos_comidas'     # listar 
   get      'tipos_comidas/nuevo',       to: 'tipos_comidas#crear',      as: 'nuevo_tipo_comida' # formulario de nuevo
@@ -23,12 +27,12 @@ Rails.application.routes.draw do
   delete    'puntajes/:id',             to: 'puntajes#eliminar'
 
   # Usuarios
-
+  get       'usuarios',                 to: 'usuarios#listar',        as: 'usuarios'
   get       'usuarios/nuevo',           to: 'usuarios#crear',         as: 'nuevo_usuario'
   get       'usuarios/:id',             to: 'usuarios#mostrar',       as: 'usuario'
   get       'usuarios/:id/editar',      to: 'usuarios#editar',        as: 'editar_usuario'
 
-  post      'usuarios',                 to: 'usuarios#guardar',       as: 'usuarios'
+  post      'usuarios',                 to: 'usuarios#guardar'       
   patch     'usuarios/:id',             to: 'usuarios#actualizar'
   put       'usuarios/:id',             to: 'usuarios#actualizar' # buena práctica colocar el PUT 
   delete    'usuarios/:id',             to: 'usuarios#eliminar'
@@ -43,4 +47,16 @@ Rails.application.routes.draw do
   patch         'restaurantes/:id',           to: 'restaurantes#actualizar'
   # put           'restaurantes/:id',           to: 'restaurantes#actualizar'
   delete        'restaurantes/:id',           to: 'restaurantes#eliminar'
+
+  # Platos
+
+  get 'platos',             to: 'platos#listar', as: 'platos'
+  get 'platos/crear',       to: 'platos#listar', as: 'nuevo_plato'
+  get 'platos/:id',         to: 'platos#listar', as: 'plato'
+  get 'platos/:id/editar',  to: 'platos#listar', as: 'editar_plato'
+
+  post    'platos',            to: 'platos#guardar'
+  patch   'platos',            to: 'platos#actualizar'
+  put     'platos',            to: 'platos#actualizar'
+  delete  'platos',            to: 'platos#eliminar'
 end

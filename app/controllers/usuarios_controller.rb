@@ -3,6 +3,11 @@ class UsuariosController < ApplicationController
 
     before_action :buscar_usuario, only: [:mostrar, :editar, :actualizar, :eliminar]
     
+    # GET /usuarios
+    def listar
+        @usuarios = Usuario.all
+    end
+
     # GET /usuarios/nuevo
     def crear
         @usuario = Usuario.new

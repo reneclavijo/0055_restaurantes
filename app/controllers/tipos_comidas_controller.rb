@@ -6,8 +6,6 @@ class TiposComidasController < ApplicationController
     # before_action :mostrar_mensaje_antes, only: [:listar]
     # after_action  :mostrar_mensaje_despues
 
-
-
     # GET /tipos_comidas
     def listar
         @todos_los_tipos = TipoComida.all.order(id: :asc)
@@ -67,8 +65,6 @@ class TiposComidasController < ApplicationController
     def asignar_tipo_comida
         @tipo_comida = TipoComida.find(params[:id])
     end
-
-
     
     def mostrar_mensaje_antes
         puts "HOLA ANTES DEL ACTION 🚚"
@@ -77,7 +73,4 @@ class TiposComidasController < ApplicationController
     def mostrar_mensaje_despues
         puts "HOLA DESPUÉS DEL ACTION 🖖"
     end
-
-
-
 end

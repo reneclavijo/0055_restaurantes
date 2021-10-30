@@ -1,0 +1,23 @@
+<h1>Platos</h1>
+
+<%= link_to "Crear plato", nuevo_plato_path %>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Restaurante</th>
+        <th>Acciones</th>
+    </tr>
+    <% @platos.each do |plato| %>
+        <tr>
+            <td><%= plato.nombre %></td>
+            <td><%= plato.descripcion %></td>
+            <td><%= plato.restaurante.nombre %></td>
+            <td>
+                <%= link_to "Editar", editar_plato_path(plato) %>
+                <%= link_to "Eliminar", plato_path(plato), method: :delete, data: { confirm: "¿Seguro que quiere eliminar el plato?" } %>
+            </td>
+        </tr>
+    <% end %>
+</table>

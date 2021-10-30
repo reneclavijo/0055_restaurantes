@@ -1,0 +1,16 @@
+<h1>Lista de usuarios</h1>
+
+<%= link_to "Registrar nuevo usuario", nuevo_usuario_path %>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+    </tr>
+    <% @usuarios.each do |usuario| %>
+        <tr>
+            <td>
+                <%= link_to usuario.nombre_usuario, usuario_path(usuario) %>
+            </td>
+        </tr>
+    <% end %>
+</table>

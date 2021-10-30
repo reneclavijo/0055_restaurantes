@@ -13,10 +13,12 @@ class RestaurantesController < ApplicationController
         @tipos_comidas  = TipoComida.all 
     end
 
+    # GET /restaurantes/editar
     def editar
         @tipos_comidas  = TipoComida.all 
     end
 
+    # GET /restaurantes/:id
     def mostrar
 
     end
@@ -32,6 +34,7 @@ class RestaurantesController < ApplicationController
         end
     end
 
+    # GET /restaurantes/editar
     def actualizar
         @restaurante.nombre = params_restaurante[:nombre]
         @restaurante.tipo_comida_id = params_restaurante[:tipo_comida_id]

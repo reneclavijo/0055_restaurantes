@@ -6,7 +6,7 @@ class Plato < ApplicationRecord
 
   
   validates(:nombre, presence: true)
-  validates(:precio, presence: true)
   validates(:descripcion, presence: true)
+  validates(:restaurante_id, presence: true)
   
 end

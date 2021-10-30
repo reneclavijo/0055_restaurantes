@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  root "votaciones#restaurante"
-  post  "votaciones/:id_restaurante/puntaje/:id_puntaje", to: 'votaciones#votar', as: 'votar_restaurante'
+  root "votaciones#listar"
+  post "votaciones/:id_restaurante/puntaje/:id_puntaje", to: "votaciones#votar", as: 'votar_restaurante'
+
 
   # Rutas Tipos Comidas
   get      'tipos_comidas',             to: 'tipos_comidas#listar',     as: 'tipos_comidas'     # listar 

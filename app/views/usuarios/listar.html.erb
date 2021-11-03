@@ -4,10 +4,14 @@
 
 <table class="table">
     <tr>
+        <th>Id</th>
         <th>Nombre</th>
     </tr>
     <% @usuarios.each do |usuario| %>
         <tr>
+            <td>
+                <%= usuario.id %>
+            </td>
             <td>
                 <%= link_to usuario.nombre_usuario, usuario_path(usuario) %>
             </td>
